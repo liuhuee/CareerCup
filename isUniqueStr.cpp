@@ -22,18 +22,16 @@ bool isUniqueStr1(char *str)
 
 bool isUniqueStr2(char *str)
 {
+    int checker = 0;
     char *p = str;
-    char *cur;
+    int value;
     while(*p != '\0')
     {
-        cur = str;
-        while(cur != p)
-        {
-            if (*cur == *p)
-                return false;
-            else
-                cur++;
-        }
+        value = *p - 'a';
+        if (checker & (1 >> value))
+            return false;
+        else
+            checker |= 1 >> value;
         p++;
     }
 
